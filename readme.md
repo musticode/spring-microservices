@@ -118,6 +118,7 @@ management.health.circuitbreakers.enabled=true
 management.endpoints.web.exposure.include=health
 management.endpoint.health.shod-details=always
 
+
 #Circuit breaker configuration
 resilience.circuitbreaker.instances.EMPLOYEE-SERVICE.registerHealthIndicator=true
 resilience.circuitbreaker.instances.EMPLOYEE-SERVICE.failureRateThreshold=50
