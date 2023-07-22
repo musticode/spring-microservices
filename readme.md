@@ -9,6 +9,7 @@ zipkin server : 9411
 
 ## Properties Files
 ### api gateway
+```
 spring.application.name=API-GATEWAY
 server.port=9191
 eureka.instance.client.serverUrl.defaultZone=http://localhost:8761/eureka/
@@ -45,16 +46,21 @@ spring.cloud.gateway.routes[2].predicates[0]=Path=/api/organizations/**
 spring.cloud.gateway.globalcors.corsConfigurations.[/**].allowedOrigins=http://localhost:3000
 spring.cloud.gateway.globalcors.corsConfigurations.[/**].allowedHeaders=*
 spring.cloud.gateway.globalcors.corsConfigurations.[/**].allowedMethods=GET, POST
+```
 
-
+```
 ### Service Registry
 spring.application.name=SERVICE-REGISTRY
 server.port=8761
 eureka.client.register-with-eureka=false
 eureka.client.fetch-registry=false
+```
 
 ### Config server
+```
 server.port=8888
+
+
 
 spring.application.name=CONFIG-SERVER
 eureka.instance.client.serverUrl.defaultZone=http://localhost:8761/eureka/
@@ -63,8 +69,11 @@ eureka.instance.client.serverUrl.defaultZone=http://localhost:8761/eureka/
 spring.cloud.config.server.git.uri=
 spring.cloud.config.server.git.clone-on-start=false
 spring.cloud.config.server.git.default-label=master
+```
 
 ### department-service
+
+```
 spring.jpa.hibernate.ddl-auto=update
 spring.datasource.url=jdbc:mysql://${MYSQL_HOST:localhost}:3306/department_db
 spring.datasource.username=root
@@ -78,9 +87,11 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 spring.application.name=DEPARTMENT-SERVICE
 eureka.instance.client.serverUrl.defaultZone=http://localhost:8761/eureka/
-
+```
 
 ### employee-service
+
+```
 spring.jpa.hibernate.ddl-auto=update
 spring.datasource.url=jdbc:mysql://${MYSQL_HOST:localhost}:3306/employee_db
 spring.datasource.username=root
@@ -121,8 +132,12 @@ resilience.circuitbreaker.instances.EMPLOYEE-SERVICE.slidingWindowType=COUNT_BAS
 resilience.retry.instances.EMPLOYEE-SERVICE.registerHealthIndicator=true
 resilience.retry.instances.EMPLOYEE-SERVICE.maxRetryAttempts=5
 resilience.retry.instances.EMPLOYEE-SERVICE.waitDuration=1s
+```
+
 
 ### department-service
+
+```
 spring.jpa.hibernate.ddl-auto=update
 spring.datasource.url=jdbc:mysql://${MYSQL_HOST:localhost}:3306/organization_db
 spring.datasource.username=root
@@ -148,4 +163,5 @@ spring.config.import=optional:configserver:http://localhost:8888
 management.health.circuitbreakers.enabled=true
 management.endpoints.web.exposure.include=*
 management.endpoint.health.shod-details=always
+```
 
